@@ -35,14 +35,16 @@ class RepoData:
         This function returns a dictionary containing the repository name 
         and the languages used in the repository.
         """
-        repo_languages = {}
+        repo_languages: Dict[str, Dict[str, float]] = {}
         logging.info("Requesting repository languages")
         for repo in self.github_user.get_repos():
             name = repo.name
             languages = repo.get_languages()
-            total_bytes = sum(languages.values())
-            language_percentages = {language: round((bytes_of_code / total_bytes) * 100, 2) for language, bytes_of_code in languages.items()}
-            repo_languages[name] = language_percentages
+            language_stats= {}
+            for language, bytes_of_code in languages.items():
+                language_stats[language] = bytes_of_code
+                language_stats["total_bytes"] = language_stats.get("total_bytes", 0) + bytes_of_code
+            repo_languages[name] = language_stats
         logging.info("Repository languages retrieved")
         return repo_languages
 
