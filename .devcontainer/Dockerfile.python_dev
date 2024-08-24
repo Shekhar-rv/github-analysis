@@ -1,0 +1,13 @@
+FROM python:3.11-bullseye
+
+RUN apt-get update
+
+RUN mkdir -p /python_dev
+WORKDIR /python_dev
+
+COPY ./requirements.txt /python_dev/requirements.txt
+RUN pip install --upgrade pip && pip install -r /python_dev/requirements.txt
+
+RUN pip install pylint==2.16.2 parameterized==0.9.0 pycodestyle==2.10.0 coverage==7.2.7
+
+ENTRYPOINT ["bash"]

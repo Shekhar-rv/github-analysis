@@ -1,0 +1,67 @@
+{
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "python",
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli": "latest"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+                "ms-python.python@2023.8.0",
+                "ms-python.pylint",
+                "ms-python.vscode-pylance",
+                "vscode-icons-team.vscode-icons",
+                "ms-python.autopep8",
+                "ms-python.isort",
+                "ms-vsliveshare.vsliveshare",
+                "ms-python.autopep8",
+                "streetsidesoftware.code-spell-checker",
+                "mtxr.sqltools-driver-pg",
+                "rioj7.command-variable",
+                "hediet.vscode-drawio",
+                "Github.copilot",
+                "ms-vscode.live-server",
+                "eamodio.gitlens",
+                "ms-azuretools.vscode-docker"
+            ],
+			"settings": {
+				"liveshare.guestApprovalRequired": false,
+				"liveshare.autoShareTerminals": true,
+				"liveshare.allowGuestDebugControl": true,
+				"liveshare.allowGuestTaskControl": true,
+				"liveshare.languages.allowGuestCommandControl": true,
+				"python.analysis.typeCheckingMode": "strict",
+				"python.linting.enabled": true,
+				"python.testing.unittestArgs": [
+					"-v",
+					"-s",
+					"./tests",
+					"-p",
+					"*_test.py"
+				],
+				"python.testing.pytestEnabled": false,
+				"python.testing.unittestEnabled": true,
+				"python.defaultInterpreterPath": "/usr/local/bin/python",
+				"python.linting.pylintEnabled": true,
+				"python.analysis.gotoDefinitionInStringLiteral": true,
+				"python.linting.pycodestyleEnabled": true,
+				"python.analysis.autoFormatStrings": true,
+				"python.linting.pycodestyleArgs": [
+					"--ignore=E501"
+				],
+				"python.linting.lintOnSave": true,
+				"[python]": {
+					"editor.insertSpaces": true,
+					"editor.tabSize": 4,
+					"editor.detectIndentation": true,
+					"editor.formatOnSave": false,
+					"editor.defaultFormatter": "ms-python.autopep8"
+				},
+				"editor.defaultFormatter": "ms-python.autopep8",
+				"python.formatting.provider": "autopep8",
+            }
+		}
+	},
+    "workspaceFolder": "/python_dev",
+	"postStartCommand": "git config --global --add safe.directory /python_dev"
+}

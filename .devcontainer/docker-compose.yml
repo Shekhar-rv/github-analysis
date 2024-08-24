@@ -1,0 +1,13 @@
+services:
+  python:
+    container_name: python_dev
+    build:
+      dockerfile: ./.devcontainer/Dockerfile.python_dev
+      context: ../
+    volumes:
+      - ../:/python_dev/
+    env_file:
+      - ../.env
+    tty: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
