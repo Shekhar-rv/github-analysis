@@ -41,7 +41,7 @@ class RepoData:
             name = repo.name
             languages = repo.get_languages()
             total_bytes = sum(languages.values())
-            language_percentages = {language: (bytes_of_code / total_bytes) * 100 for language, bytes_of_code in languages.items()}
+            language_percentages = {language: round((bytes_of_code / total_bytes) * 100, 2) for language, bytes_of_code in languages.items()}
             repo_languages[name] = language_percentages
         logging.info("Repository languages retrieved")
         return repo_languages
@@ -68,7 +68,7 @@ class RepoData:
         """
         try:
             # Ensure the directory exists
-            data_dir = "/python_dev/src/data"
+            data_dir = "/github_analysis/src/data"
             makedirs(data_dir, exist_ok=True)
             logging.info("Directory '%s' created or already exists", data_dir)
 

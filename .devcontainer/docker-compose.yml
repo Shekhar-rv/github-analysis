@@ -1,11 +1,15 @@
 services:
   python:
-    container_name: python_dev
+    container_name: github_analysis
     build:
-      dockerfile: ./.devcontainer/Dockerfile.python_dev
+      dockerfile: ./.devcontainer/Dockerfile.github_analysis
       context: ../
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
     volumes:
-      - ../:/python_dev/
+      - ../:/github_analysis/
     env_file:
       - ../.env
     tty: true

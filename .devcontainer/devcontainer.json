@@ -62,6 +62,6 @@
             }
 		}
 	},
-    "workspaceFolder": "/python_dev",
-	"postStartCommand": "git config --global --add safe.directory /python_dev"
+    "workspaceFolder": "/github_analysis",
+	"postStartCommand": "git config --global --add safe.directory /github_analysis"
 }
