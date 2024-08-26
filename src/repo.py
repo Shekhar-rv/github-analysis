@@ -58,7 +58,7 @@ class RepoData:
         for repo in self.github_user.get_repos():
             name = repo.name
             commits = repo.get_commits(author=self.github_user.login)
-            commit_details = {commit.commit.author.date for commit in commits}
+            commit_details = [commit.commit.author.date for commit in commits]
             repo_commits[name] = commit_details
         logging.info("Repository commits retrieved")
         return repo_commits
@@ -70,7 +70,7 @@ class RepoData:
         """
         try:
             # Ensure the directory exists
-            data_dir = "/github_analysis/src/data"
+            data_dir = "/github_analysis/src/data/json"
             makedirs(data_dir, exist_ok=True)
             logging.info("Directory '%s' created or already exists", data_dir)
 
